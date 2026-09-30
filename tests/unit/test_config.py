@@ -143,7 +143,7 @@ class TestOpenAIConfig:
             OpenAIConfig(api_key="sk-test", max_tokens=50)
 
         with pytest.raises(ValidationError):
-            OpenAIConfig(api_key="sk-test", max_tokens=5000)
+            OpenAIConfig(api_key="sk-test", max_tokens=200001)
 
     def test_invalid_temperature(self) -> None:
         """Test invalid temperature is rejected."""

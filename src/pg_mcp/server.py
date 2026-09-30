@@ -230,7 +230,7 @@ async def lifespan(_app: FastMCP) -> AsyncIterator[None]:
         if _pools is not None:
             try:
                 # Use 5 second timeout for graceful shutdown
-                await close_pools(_pools, timeout=5.0)
+                await close_pools(_pools, close_timeout=5.0)
                 logger.info("Database connection pools closed")
             except Exception as e:
                 logger.error(f"Error closing connection pools: {e!s}")

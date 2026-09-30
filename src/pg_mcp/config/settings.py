@@ -54,12 +54,14 @@ class OpenAIConfig(BaseSettings):
         default=None, description="Base URL for OpenAI-compatible APIs (e.g. MiMo)"
     )
     model: str = Field(default="gpt-4o-mini", description="Model to use for SQL generation")
-    max_tokens: int = Field(default=2000, ge=100, le=4096, description="Maximum tokens in response")
+    max_tokens: int = Field(
+        default=2000, ge=100, le=200000, description="Maximum tokens in response"
+    )
     temperature: float = Field(
         default=0.0, ge=0.0, le=2.0, description="Temperature for response randomness"
     )
     timeout: float = Field(
-        default=30.0, ge=5.0, le=120.0, description="API request timeout in seconds"
+        default=30.0, ge=5.0, le=600.0, description="API request timeout in seconds"
     )
 
     @field_validator("api_key")
